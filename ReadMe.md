@@ -27,5 +27,6 @@ The client uses the following additional libaries:
 
 request (sends REST requests)
 express-handlebars ( a templating library)
+nock (for mocking in unit tests - not included)
 
 

@@ -22,10 +22,10 @@ app.get('/', (req, res) => {
 // mock events endpoint. this would be replaced by a call to a datastore
 // if you went on to develop this as a real application.
 app.get('/events', (req, res) => {
-    res.json([
+    res.json({ events: [
         { title: 'an event', id: 1234, description: 'something really cool' },
         { title: 'another event', id: 5678, description: 'something even cooler' }
-    ]);
+    ] });
 });
 
 // create other methods here - version, login, add events etc
