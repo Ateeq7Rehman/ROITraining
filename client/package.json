@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "SERVER=http://localhost:8081 node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "SERVER=http://localhost:8081 mocha"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^6.2.0",
+    "nock": "^10.0.6",
     "supertest": "^4.0.2"
   },
   "dependencies": {
