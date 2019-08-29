@@ -12,7 +12,7 @@ const bodyParser = require('body-parser');
 // https://www.npmjs.com/package/express-handlebars
 // - look inside the views folder for the templates
 // data is inserted into a template inside {{ }}
-const hbs = require( 'express-handlebars');
+const hbs = require('express-handlebars');
 
 // request is used to make REST calls to the backend microservice
 // details here: https://www.npmjs.com/package/request
@@ -23,10 +23,10 @@ const app = express();
 
 // set up handlbars as the templating engine
 app.set('view engine', 'hbs');
-app.engine( 'hbs', hbs( {
+app.engine('hbs', hbs({
     extname: 'hbs',
     defaultView: 'default'
-  }));
+}));
 
 // set up the parser to get the contents of data from html forms 
 // this would be used in a POST to the server as follows:
@@ -42,28 +42,70 @@ app.get('/', (req, res) => {
     // to npm start inside package.json:
     //  "start": "SERVER=http://localhost:8081 node server.js",
     request.get(  // first argument: url + return format
-        { url: process.env.SERVER + '/events',  // the microservice end point for events
-          json: true  // response from server will be json format
-        } , // second argument: function with three args,
-            // runs when server response received
-            // body hold the return from the server
+        {
+            url: process.env.SERVER + '/events',  // the microservice end point for events
+            json: true  // response from server will be json format
+        }, // second argument: function with three args,
+        // runs when server response received
+        // body hold the return from the server
         (error, response, body) => {
             console.log('error:', error); // Print the error if one occurred
             console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
             console.log(body); // print the return from the server microservice
-            res.render('home', 
-                       {layout: 'default',  //the outer html page
-                        template: 'index-template', // the partial view inserted into 
-                                                    // {{body}} in the layout - the code
-                                                    // in here inserts values from the JSON
-                                                    // received from the server
-                        events: body.events}); // pass the data from the server to the template
-      });
+            res.render('home',
+                {
+                    layout: 'default',  //the outer html page
+                    template: 'index-template', // the partial view inserted into 
+                    // {{body}} in the layout - the code
+                    // in here inserts values from the JSON
+                    // received from the server
+                    events: body.events
+                }); // pass the data from the server to the template
+        });
 
 });
 
 
-// create other get and post methods here - version, login, add events etc
+// defines a route that receives the post request to /event
+app.post('/event',
+    urlencodedParser, // second argument - how to parse the uploaded content
+    // into req.body
+    (req, res) => {
+        // make a request to the backend microservice using the request package
+        // the URL for the backend service should be set in configuration 
+        // using an environment variable. Here, the variable is passed 
+        // to npm start inside package.json:
+        //  "start": "SERVER=http://localhost:8081 node server.js",
+        request.post(  // first argument: url + data + formats
+            {
+                url: process.env.SERVER + '/event',  // the microservice end point for events
+                body: req.body,  // content of the form
+                headers: { // uploading json
+                    "Content-Type": "application/json"
+                },
+                json: true // response from server will be json format
+            },
+            (error, response, body) => {  // third argument: function with three args,
+                // runs when server response received
+                // body hold the return from the server
+                console.log('error:', error); // Print the error if one occurred
+                console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+                console.log(body); // print the return from the server microservice
+                res.render('home',
+                    {
+                        layout: 'default',  //the outer html page
+                        template: 'index-template', // the partial view inserted into 
+                        // {{body}} in the layout - the code
+                        // in here inserts values from the JSON
+                        // received from the server
+                        events: body.events
+                    }); // pass the data from the server to the template
+            });
+
+    });
+
+
+// create other get and post methods here - version, login,  etc
 
 
 

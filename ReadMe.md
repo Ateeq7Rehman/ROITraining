@@ -12,7 +12,7 @@ d. navigate to http://localhost:8080
 
 Uses nodejs with the express web server on both server and client microservices.
 
-The backend server receives REST requests on port 8081 and returns mock data.
+The backend server receives REST requests on port 8082 and returns mock data.
 
 The client inserts json from the server into an html template in the Views folder
 and returns it to the requestor on port 8080.
