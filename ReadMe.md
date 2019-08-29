@@ -25,7 +25,7 @@ express: a web server
     https://www.npmjs.com/package/express
 body-parser to convert json and form data in the request into parameters.
     https://www.npmjs.com/package/body-parser
-mocha, chai and supertest (for unit testing - not included)
+mocha, chai and supertest (for unit testing)
     https://www.npmjs.com/package/mocha
     https://www.npmjs.com/package/chai
     https://www.npmjs.com/package/supertest
