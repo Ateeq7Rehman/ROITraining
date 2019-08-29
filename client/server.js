@@ -67,6 +67,7 @@ app.get('/', (req, res) => {
 
 
 
+
 // generic error handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
@@ -81,3 +82,5 @@ const server = app.listen(PORT, () => {
 
     console.log(`Events app listening at http://${host}:${port}`);
 });
+
+module.exports = app;

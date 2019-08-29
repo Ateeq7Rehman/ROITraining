@@ -44,3 +44,5 @@ const server = app.listen(PORT, () => {
 
     console.log(`Events app listening at http://${host}:${port}`);
 });
+
+module.exports = app;

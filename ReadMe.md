@@ -3,7 +3,7 @@
 prerequisites: node and npm
     these are available inside GCP cloud shell if you can't install them locally.
 
-a. open two separate terminals: 1 in /server, 1 in /client
+a. open two separate terminals: one in /server, one in /client
 b. run npm install in each terminal
 c. run npm start in each terminal
 d. navigate to http://localhost:8080
@@ -17,16 +17,24 @@ The backend server receives REST requests on port 8081 and returns mock data.
 The client inserts json from the server into an html template in the Views folder
 and returns it to the requestor on port 8080.
 
+3. Dependencies
+
 client and server both use the following npm packages:
 
 express: a web server
+    https://www.npmjs.com/package/express
 body-parser to convert json and form data in the request into parameters.
+    https://www.npmjs.com/package/body-parser
 mocha, chai and supertest (for unit testing - not included)
+    https://www.npmjs.com/package/mocha
+    https://www.npmjs.com/package/chai
+    https://www.npmjs.com/package/supertest
+
 
 The client uses the following additional libaries:
 
-request (sends REST requests)
 express-handlebars ( a templating library)
-nock (for mocking in unit tests - not included)
-
+    https://github.com/ericf/express-handlebars
+nock (for mocking the api call)
+    https://www.npmjs.com/package/nock
 

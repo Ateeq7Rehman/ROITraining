@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "SERVER=http://localhost:8081 node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "SERVER=http://localhost:8081 mocha"
   },
   "keywords": [],
   "author": "",
