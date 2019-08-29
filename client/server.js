@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
     // the URL for the backend service should be set in configuration 
     // using an environment variable. Here, the variable is passed 
     // to npm start inside package.json:
-    //  "start": "SERVER=http://localhost:8081 node server.js",
+    //  "start": "SERVER=http://localhost:8082 node server.js",
     request.get(  // first argument: url + return format
         {
             url: process.env.SERVER + '/events',  // the microservice end point for events
@@ -75,10 +75,10 @@ app.post('/event',
         // the URL for the backend service should be set in configuration 
         // using an environment variable. Here, the variable is passed 
         // to npm start inside package.json:
-        //  "start": "SERVER=http://localhost:8081 node server.js",
+        //  "start": "SERVER=http://localhost:8082 node server.js",
         request.post(  // first argument: url + data + formats
             {
-                url: process.env.SERVER + '/event',  // the microservice end point for events
+                url: process.env.SERVER + '/event',  // the microservice end point for adding an event
                 body: req.body,  // content of the form
                 headers: { // uploading json
                     "Content-Type": "application/json"
