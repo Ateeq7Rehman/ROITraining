@@ -1,16 +1,14 @@
-const assert = require('assert');
+const chai = require('chai');
 const nock = require('nock');
 const request = require('supertest');
 const app = require('../server');
 
 describe('GET /', function() {
-    it('responds with html', function(done) {
+    it('responds with home page', function(done) {
 
     //specify the url to be intercepted
     nock("http://localhost:8081")
       //define the method to be intercepted
-      .persist()
-.log(console.log)
       .get('/events')
       //respond with a OK and the specified JSON response
       .reply(200, {
@@ -23,13 +21,18 @@ describe('GET /', function() {
 
 
       request(app)
-        .get('/')
-        .end(function (err, res) {
-            //assert that the mocked response is returned
-            assert(res.status, 200)
-            assert('Content-Type', /json/);
-            done();
-          });
+      .get('/')
+      .expect('Content-Type', /html/)
+      .expect(200)
+      .end((err, res) => {
+        if (err) {
+          return done(err);
+        }
+        chai.assert.isTrue(res.text.includes('<title>Team [TEAM NAME] Website</title>'));
+        return done();
+      });
+
+       
     });
   });
 

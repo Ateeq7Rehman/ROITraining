@@ -1,4 +1,4 @@
-var assert = require('assert');
+var chai = require('chai');
 const request = require('supertest');
 const app = require('../server');
 
@@ -20,14 +20,18 @@ describe('GET /', function() {
         .expect('Content-Type', /json/)
         .expect(200, done);
     });
-    it('returns two events', function(done) {
-        request(app)
-          .get('/events')
-          .set('Accept', 'application/json')
-          .expect(200)
-          .then(response => {
-            assert(response.body.length, 2);
-        });
-        done();
+    it('returns events', function(done) {
+      request(app)
+      .get('/events')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end((err, res) => {
+        if (err) {
+          return done(err);
+        }
+        chai.expect(JSON.parse(res.text)).to.have.property('events');
+        return done();
+      });
+
       });
   });
