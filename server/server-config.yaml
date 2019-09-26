@@ -1,0 +1,20 @@
+####################################################################################
+#server yaml
+####################################################################################
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: devops-server
+  name: devops-server
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  template:
+    metadata:
+    spec:
+      containers:
+      - image: gcr.io/devops-nodejs/devops-demo:latest
+        resources: {}
