@@ -6,8 +6,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: backend
-  name: backend
+    app: devops-demo-server
+  name: devops-demo-server
   namespace: default
 spec:
   progressDeadlineSeconds: 600
