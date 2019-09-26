@@ -12,9 +12,13 @@ metadata:
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
+  selector:
+    matchLabels:
+      app: devops-demo-server
   template:
     metadata:
     spec:
       containers:
       - image: gcr.io/devops-nodejs/devops-demo-server:vBUILD_NUMBER
+        name: devops-demo-server
         resources: {}
