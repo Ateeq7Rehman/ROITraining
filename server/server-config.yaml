@@ -16,5 +16,5 @@ spec:
     metadata:
     spec:
       containers:
-      - image: gcr.io/devops-nodejs/devops-demo:v$BUILD_NUMBER
+      - image: gcr.io/devops-nodejs/devops-demo-server:v$BUILD_NUMBER
         resources: {}
