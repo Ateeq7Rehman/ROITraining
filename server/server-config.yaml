@@ -17,6 +17,8 @@ spec:
       app: devops-demo-server
   template:
     metadata:
+      labels:
+        app: devops-demo-server
     spec:
       containers:
       - image: gcr.io/devops-nodejs/devops-demo-server:vBUILD_NUMBER
