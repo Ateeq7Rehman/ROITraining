@@ -1,0 +1,27 @@
+####################################################################################
+#server yaml
+####################################################################################
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: devops-demo-server
+  name: devops-demo-server
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-demo-server
+  template:
+    metadata:
+      labels:
+        app: devops-demo-server
+    spec:
+      containers:
+      - image: gcr.io/devops-nodejs/devops-demo-server:vBUILD_NUMBER
+        name: devops-demo-server
+        resources: {}
+© 2019 GitHub, Inc.
