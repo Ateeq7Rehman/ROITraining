@@ -21,7 +21,7 @@ spec:
         app: devops-demo-server
     spec:
       containers:
-      - image: gcr.io/devops-nodejs/devops-demo-server:vBUILD_NUMBER
+      - image: gcr.io/devopstraining-253916/devops-demo-server:vBUILD_NUMBER
         name: devops-demo-server
         resources: {}
 © 2019 GitHub, Inc.
